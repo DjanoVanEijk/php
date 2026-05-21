@@ -1,4 +1,3 @@
-// pagina werkt niet tot dat een id in de url is gezet, bijvoorbeeld: http://localhost/p4/week_1/opdracht_22/get_id.php?id=123
 <?php
     $id = $_GET['id'];
     echo "ID: " . $id;
@@ -11,6 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <p>pagina werkt niet tot dat een id in de url is gezet, bijvoorbeeld: http://localhost/p4/week_1/opdracht_22/get_id.php?id=123</p><br>
 </body>
 </html>
