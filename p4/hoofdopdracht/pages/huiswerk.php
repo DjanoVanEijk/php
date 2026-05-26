@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
  <div class="container">
 <?php require "../includes/header.php"; ?>
 
- <div class="container">
+ <div>
 <!-- Formulier voor het toevoegen van huiswerk -->
  <h2>Huiswerk toevoegen</h2>
     <form method="POST">
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ?>
 </div>
 
-<div class="container">
+<div>
             <h2>Huiswerk overzicht</h2>
 
             <?php

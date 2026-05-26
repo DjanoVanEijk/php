@@ -9,7 +9,7 @@ $trackerType = "Huiswerk";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanvas</title>
-    <link rel="stylesheet" href="/p3-php/hoofdopdracht/style.css">
+    <link rel="stylesheet" href="/php/p4/hoofdopdracht/style.css">
 </head>
 <header>
         <h1><?= $appNaam ?></h1>
