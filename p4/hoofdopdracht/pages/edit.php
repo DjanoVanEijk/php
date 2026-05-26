@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->execute([$vak, $punten, $deadline, $id]);
 
-    header("Location: ../index.php");
+    header("Location: huiswerk.php");
     exit;
 }
 
@@ -58,20 +58,5 @@ $item = $stmt->fetch(PDO::FETCH_ASSOC);
     <button type="submit">Opslaan</button>
 </form>
 
-<div class="container">
-<!-- Haal alle huiswerk uit de database en toon ze in een lijst -->
- <h2>Huiswerk overzicht</h2>
-     <?php
-        $huiswerk = $conn->prepare("SELECT * FROM huiswerk");
-        $huiswerk->execute();
-        $doosje_met_huiswerk = $huiswerk->fetchAll(PDO::FETCH_ASSOC);
-
-        echo "<ul>";
-        foreach ($doosje_met_huiswerk as $huiswerkdeel){
-        echo "<li>" . $huiswerkdeel['vak'] . " - " . $huiswerkdeel['punten'] . " punten - Deadline: " . $huiswerkdeel['deadline'] . "</li>";
-        }
-        echo "</ul>";
-        ?>
-</div>
 </body>
 </html>

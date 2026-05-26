@@ -49,9 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 }
-
 ?>
 
+ <div class="container">
 <?php require "../includes/header.php"; ?>
 
  <div class="container">
@@ -87,22 +87,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ?>
 </div>
 
+<div class="container">
+            <h2>Huiswerk overzicht</h2>
 
+            <?php
+            $huiswerk = $conn->prepare("SELECT * FROM huiswerk");
+            $huiswerk->execute();
+            $doosje_met_huiswerk = $huiswerk->fetchAll(PDO::FETCH_ASSOC);
 
- <div class="container">
-<!-- Haal alle huiswerk uit de database en toon ze in een lijst -->
- <h2>Huiswerk overzicht</h2>
-     <?php
-        $huiswerk = $conn->prepare("SELECT * FROM huiswerk");
-        $huiswerk->execute();
-        $doosje_met_huiswerk = $huiswerk->fetchAll(PDO::FETCH_ASSOC);
+            echo "<ul>";
 
-        echo "<ul>";
-        foreach ($doosje_met_huiswerk as $huiswerkdeel){
-        echo "<li>" . $huiswerkdeel['vak'] . " - " . $huiswerkdeel['punten'] . " punten - Deadline: " . $huiswerkdeel['deadline'] . "</li>";
-        }
-        echo "</ul>";
-        ?>
-</div>
+            foreach ($doosje_met_huiswerk as $huiswerkdeel){
+
+                echo "<li>";
+                echo $huiswerkdeel['vak'] . " - ";
+                echo $huiswerkdeel['punten'] . " punten - ";
+                echo "Deadline: " . $huiswerkdeel['deadline'];
+
+                echo ' <a href="delete.php?id=' . $huiswerkdeel['id'] . '">Verwijderen</a>';
+                echo ' <a href="edit.php?id=' . $huiswerkdeel['id'] . '">Bewerken</a>';
+
+                echo "</li>";
+            }
+
+            echo "</ul>";
+            ?>
+        </div>
 
 <?php require "../includes/footer.php"; ?>
