@@ -21,12 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $punten = $_POST["punten"];
     $deadline = $_POST["deadline"];
 
-    $sql = "UPDATE huiswerk 
-            SET vak = ?, punten = ?, deadline = ?
+    $sql = "DELETE FROM huiswerk 
             WHERE id = ?";
 
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$vak, $punten, $deadline, $id]);
+    $stmt->execute([$id]);
 
     header("Location: ../index.php");
     exit;
@@ -44,18 +43,13 @@ $item = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit</title>
+    <title>Delete</title>
 </head>
 <body>
 
 <form method="POST">
-    <input type="text" name="vak" value="<?= $item['vak'] ?>">
-    <input type="number" name="punten" value="<?= $item['punten'] ?>">
-    <input type="date" name="deadline" value="<?= $item['deadline'] ?>">
-    
     <input type="hidden" name="id" value="<?= $item['id'] ?>">
-
-    <button type="submit">Opslaan</button>
+    <button type="submit">Klik om te verwijderen</button>
 </form>
 
 <div class="container">
