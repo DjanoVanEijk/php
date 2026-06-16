@@ -1,4 +1,5 @@
 <?php
+session_start();
 $appNaam = "Kanvas";
 $trackerType = "Huiswerk";
 ?>

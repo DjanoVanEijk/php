@@ -1,22 +1,15 @@
 <?php
-// Inclusie van databaseverbinding
+
 require "../includes/db.php";
 
-// Start de sessie om berichten tussen pagina's door te geven
-session_start();
-
-// Array voor foutmeldingen
 $errors = [];
 
-// Controleer of het formulier is verzonden via POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // Haal de ingevoerde waarden op en trim ze
     $vak = trim($_POST['vak'] ?? '');
     $punten = $_POST['punten'] ?? '';
     $deadline = $_POST['deadline'] ?? '';
 
-    // Validatie van vak
     if (empty($vak)) {
         $errors[] = "Vak is verplicht.";
     }
@@ -29,17 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Vak mag maximaal 50 tekens bevatten.";
     }
 
-    // Validatie van punten
     if (empty($punten) || !is_numeric($punten) || $punten < 0 || $punten > 10) {
         $errors[] = "Punten moet een getal tussen 0 en 10 zijn.";
     }
 
-    // Validatie van deadline
     if (empty($deadline)) {
         $errors[] = "Deadline is verplicht.";
     }
 
-    // Als er geen fouten zijn, voeg het huiswerk toe aan de database
     if (empty($errors)) {
         $sql = "INSERT INTO huiswerk (vak, punten, deadline) VALUES (:vak, :punten, :deadline)";
         $stmt = $conn->prepare($sql);
@@ -55,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php require "../includes/header.php"; ?>
 
  <div>
-<!-- Formulier voor het toevoegen van huiswerk -->
  <h2>Huiswerk toevoegen</h2>
     <form method="POST">
     <label>Vak</label><br>
@@ -67,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <button type="submit">Submit</button>
     </form>
 
-    <!-- Toon succesbericht als het is ingesteld in de sessie -->
     <?php
     if (isset($_SESSION['success'])) {
     echo $_SESSION['success'];
@@ -75,7 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     ?>
 
-<!-- Toon foutmeldingen als er fouten zijn -->
     <?php
     if (!empty($errors)) {
         echo '<div><ul>';
