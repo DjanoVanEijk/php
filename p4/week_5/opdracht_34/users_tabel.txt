@@ -1,0 +1,7 @@
+een gebruiker tabel moet hebben:
+id INT makkelijk gebruikers vinden
+username varchar makkelijke manier om gebruikers te herkennen
+password varchar om in te loggen
+email varchar om in te loggen en mails te sturen
+country varchar zodat gebruikers kunnen zien waar je vaandaan komt
+isadmin varchar voor paginas die alleen admins in mogen
