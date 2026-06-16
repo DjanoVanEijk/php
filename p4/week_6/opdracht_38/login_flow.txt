@@ -1,0 +1,4 @@
+Gebruiker vult formulier in
+Gebruiker wordt door een check pagina gestuurd
+Gebruiker logt succesvol in of krijgt een error
+Wordt redirected naar de index of terug naar het inlog scherm met de error
