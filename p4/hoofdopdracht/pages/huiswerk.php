@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+require "../includes/check_login.php";
 require "../includes/db.php";
 
 $errors = [];
@@ -41,9 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
- <div class="container">
 <?php require "../includes/header.php"; ?>
 
+ <div class="container">
  <div>
  <h2>Huiswerk toevoegen</h2>
     <form method="POST">

@@ -1,19 +1,7 @@
 <?php
 session_start();
-
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "p3_app";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-} catch(PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
+require "../includes/check_login.php";
+require "../includes/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

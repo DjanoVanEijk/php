@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+require "../includes/check_login.php";
 require "../includes/db.php";
 
 $id = $_GET['id'] ?? null;
