@@ -1,7 +1,6 @@
 
 <nav>
     <ul>
-        <li><a href="/php/p4/hoofdopdracht/index.php">Home</a></li>
         <li><a href="/php/p4/hoofdopdracht/pages/huiswerk.php">Huiswerk</a></li>
 
         <?php if (!empty($_SESSION['userid'])): ?>
